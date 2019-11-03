@@ -162,6 +162,8 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OperatorsController.cs" />
+    <Compile Include="Controllers\RatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,12 +175,27 @@
     <Compile Include="Migrations\201910181839325_MergeDbContext.Designer.cs">
       <DependentUpon>201910181839325_MergeDbContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911031150566_newModelAdded.cs" />
+    <Compile Include="Migrations\201911031150566_newModelAdded.Designer.cs">
+      <DependentUpon>201911031150566_newModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911031154595_newModelAdded1.cs" />
+    <Compile Include="Migrations\201911031154595_newModelAdded1.Designer.cs">
+      <DependentUpon>201911031154595_newModelAdded1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911031213575_changeNameToRate.cs" />
+    <Compile Include="Migrations\201911031213575_changeNameToRate.Designer.cs">
+      <DependentUpon>201911031213575_changeNameToRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Operator.cs" />
+    <Compile Include="Models\Param.cs" />
+    <Compile Include="Models\Rate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -246,6 +263,16 @@
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Books\BooksData.cshtml" />
+    <Content Include="Views\Rates\Create.cshtml" />
+    <Content Include="Views\Rates\Delete.cshtml" />
+    <Content Include="Views\Rates\Details.cshtml" />
+    <Content Include="Views\Rates\Edit.cshtml" />
+    <Content Include="Views\Rates\Index.cshtml" />
+    <Content Include="Views\Operators\Create.cshtml" />
+    <Content Include="Views\Operators\Delete.cshtml" />
+    <Content Include="Views\Operators\Details.cshtml" />
+    <Content Include="Views\Operators\Edit.cshtml" />
+    <Content Include="Views\Operators\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -263,6 +290,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910181839325_MergeDbContext.resx">
       <DependentUpon>201910181839325_MergeDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031150566_newModelAdded.resx">
+      <DependentUpon>201911031150566_newModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031154595_newModelAdded1.resx">
+      <DependentUpon>201911031154595_newModelAdded1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031213575_changeNameToRate.resx">
+      <DependentUpon>201911031213575_changeNameToRate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
