@@ -10,125 +10,107 @@ using Tariff.Models;
 
 namespace Tariff.Controllers
 {
-    public class RatesController : Controller
+    public class RateTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Rates
+        // GET: RateTypes
         public ActionResult Index()
         {
-            //List<Operator> operators = new List<Operator>(db.Operators.ToList());
-            //List<RateType> rateTypes = new List<RateType>(db.RateTypes.ToList());
-
-            //ViewData["Operator"] = operators;
-            //ViewData["RateType"] = rateTypes;
-
-            return View(db.Rates.ToList());
+            return View(db.RateTypes.ToList());
         }
 
-        // GET: Rates/Details/5
+        // GET: RateTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rate rate = db.Rates.Find(id);
-            if (rate == null)
+            RateType rateType = db.RateTypes.Find(id);
+            if (rateType == null)
             {
                 return HttpNotFound();
             }
-            return View(rate);
+            return View(rateType);
         }
 
-        // GET: Rates/Create
+        // GET: RateTypes/Create
         public ActionResult Create()
         {
-            SelectList operators = new SelectList(db.Operators.ToList(), "Id", "Name");
-            SelectList rateTypes = new SelectList(db.RateTypes.ToList(), "Id", "Name");
-
-            ViewData["Operator"] = operators;
-            ViewData["RateType"] = rateTypes;
             return View();
         }
 
-        // POST: Rates/Create
+        // POST: RateTypes/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Rate rate)
+        public ActionResult Create([Bind(Include = "Id,Name")] RateType rateType)
         {
-            //SelectList operators = new SelectList(db.Operators, "Id", "Name");
-            //SelectList rateTypes = new SelectList(db.RateTypes, "Id", "Name");
-
-            //ViewData["Operator"] = operators;
-            //ViewData["RateType"] = rateTypes;
-
-
             if (ModelState.IsValid)
             {
-                db.Rates.Add(rate);
+                db.RateTypes.Add(rateType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(rate);
+            return View(rateType);
         }
 
-        // GET: Rates/Edit/5
+        // GET: RateTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rate rate = db.Rates.Find(id);
-            if (rate == null)
+            RateType rateType = db.RateTypes.Find(id);
+            if (rateType == null)
             {
                 return HttpNotFound();
             }
-            return View(rate);
+            return View(rateType);
         }
 
-        // POST: Rates/Edit/5
+        // POST: RateTypes/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,RateType")] Rate rate)
+        public ActionResult Edit([Bind(Include = "Id,Name")] RateType rateType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rate).State = EntityState.Modified;
+                db.Entry(rateType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(rate);
+            return View(rateType);
         }
 
-        // GET: Rates/Delete/5
+        // GET: RateTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rate rate = db.Rates.Find(id);
-            if (rate == null)
+            RateType rateType = db.RateTypes.Find(id);
+            if (rateType == null)
             {
                 return HttpNotFound();
             }
-            return View(rate);
+            return View(rateType);
         }
 
-        // POST: Rates/Delete/5
+        // POST: RateTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Rate rate = db.Rates.Find(id);
-            db.Rates.Remove(rate);
+            RateType rateType = db.RateTypes.Find(id);
+            db.RateTypes.Remove(rateType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

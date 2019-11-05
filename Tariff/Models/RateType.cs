@@ -5,11 +5,9 @@ using System.Text;
 
 namespace Tariff.Models
 {
-   public class Param
-    {
-        public int Id { get; set; }
-
-        public string Value { get; set; }
-
+   public class RateType
+   {
+       public int Id { get; set; }
+       public string Name { get; set; }
     }
 }

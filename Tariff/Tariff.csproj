@@ -164,6 +164,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OperatorsController.cs" />
     <Compile Include="Controllers\RatesController.cs" />
+    <Compile Include="Controllers\RateTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +188,10 @@
     <Compile Include="Migrations\201911031213575_changeNameToRate.Designer.cs">
       <DependentUpon>201911031213575_changeNameToRate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911032152225_RateType_class_added.cs" />
+    <Compile Include="Migrations\201911032152225_RateType_class_added.Designer.cs">
+      <DependentUpon>201911032152225_RateType_class_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -196,6 +201,7 @@
     <Compile Include="Models\Operator.cs" />
     <Compile Include="Models\Param.cs" />
     <Compile Include="Models\Rate.cs" />
+    <Compile Include="Models\RateType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -273,6 +279,11 @@
     <Content Include="Views\Operators\Details.cshtml" />
     <Content Include="Views\Operators\Edit.cshtml" />
     <Content Include="Views\Operators\Index.cshtml" />
+    <Content Include="Views\RateTypes\Create.cshtml" />
+    <Content Include="Views\RateTypes\Delete.cshtml" />
+    <Content Include="Views\RateTypes\Details.cshtml" />
+    <Content Include="Views\RateTypes\Edit.cshtml" />
+    <Content Include="Views\RateTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911031213575_changeNameToRate.resx">
       <DependentUpon>201911031213575_changeNameToRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911032152225_RateType_class_added.resx">
+      <DependentUpon>201911032152225_RateType_class_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

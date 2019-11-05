@@ -14,6 +14,7 @@ namespace Tariff.Models
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Operator> Operators { get; set; }
         public DbSet<Param> Params { get; set; }
+        public DbSet<RateType> RateTypes { get; set; }
 
 
 

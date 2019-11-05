@@ -11,6 +11,5 @@ namespace Tariff.Models
 
         public string Name { get; set; }
 
-
     }
 }

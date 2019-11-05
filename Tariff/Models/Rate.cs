@@ -12,7 +12,7 @@ namespace Tariff.Models
 
         public Operator Operator { get; set; }
 
-        public string Type { get; set; }
+        public RateType RateType { get; set; }
 
         public virtual ICollection<Param> Params { get; set; }
 
