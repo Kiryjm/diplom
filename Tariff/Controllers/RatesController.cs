@@ -103,7 +103,7 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,RateType")] Rate rate)
+        public ActionResult Edit([Bind(Include = "Id,Name,RateTypeId,OperatorId")] Rate rate)
         {
             if (ModelState.IsValid)
             {
