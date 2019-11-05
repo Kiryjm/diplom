@@ -14,6 +14,10 @@ namespace Tariff.Models
 
         public RateType RateType { get; set; }
 
+        public int OperatorId { get; set; }
+
+        public int RateTypeId { get; set; }
+
         public virtual ICollection<Param> Params { get; set; }
 
     }

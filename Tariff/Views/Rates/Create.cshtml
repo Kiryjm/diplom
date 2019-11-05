@@ -31,11 +31,11 @@
                 @Html.ValidationMessageFor(model => model.RateType, "", new { @class = "text-danger" })
             </div>*@
             <div id ="OperatorList" class="col-md-10">
-                @Html.DropDownListFor(model => model.Operator.Id, ViewData["Operator"] as SelectList)
+                @Html.DropDownListFor(model => model.OperatorId, ViewData["Operator"] as SelectList)
                 @*@Html.ValidationMessageFor(ViewBag => ViewBag.Operators, "", new { @class = "text-danger" })*@
             </div>
             <div id="RateTypeList" class="col-md-10">
-                @Html.DropDownListFor(model => model.RateType.Id, ViewData["RateType"] as SelectList)
+                @Html.DropDownListFor(model => model.RateTypeId, ViewData["RateType"] as SelectList)
                 @*@Html.ValidationMessageFor(ViewBag => ViewBag.Operators, "", new { @class = "text-danger" })*@
             </div>
         </div>

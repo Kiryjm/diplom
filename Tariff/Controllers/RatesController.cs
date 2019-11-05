@@ -23,7 +23,7 @@ namespace Tariff.Controllers
             //ViewData["Operator"] = operators;
             //ViewData["RateType"] = rateTypes;
 
-            return View(db.Rates.ToList());
+            return View(db.Rates.Include(x=>x.Operator).Include(x => x.RateType));
         }
 
         // GET: Rates/Details/5
@@ -79,6 +79,13 @@ namespace Tariff.Controllers
         // GET: Rates/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            SelectList operators = new SelectList(db.Operators.ToList(), "Id", "Name");
+            SelectList rateTypes = new SelectList(db.RateTypes.ToList(), "Id", "Name");
+
+            ViewData["Operator"] = operators;
+            ViewData["RateType"] = rateTypes;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -11,13 +11,18 @@
 </p>
 <table class="table">
     <tr>
+        
         <th>
             @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Operator)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RateType)
         </th>
         <th></th>
+
     </tr>
 
 @foreach (var item in Model) {

@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201911032152225_RateType_class_added.Designer.cs">
       <DependentUpon>201911032152225_RateType_class_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911051950199_OperatorId_RateTypeId_added.cs" />
+    <Compile Include="Migrations\201911051950199_OperatorId_RateTypeId_added.Designer.cs">
+      <DependentUpon>201911051950199_OperatorId_RateTypeId_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -313,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911032152225_RateType_class_added.resx">
       <DependentUpon>201911032152225_RateType_class_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911051950199_OperatorId_RateTypeId_added.resx">
+      <DependentUpon>201911051950199_OperatorId_RateTypeId_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
