@@ -288,6 +288,7 @@
     <Content Include="Views\RateTypes\Details.cshtml" />
     <Content Include="Views\RateTypes\Edit.cshtml" />
     <Content Include="Views\RateTypes\Index.cshtml" />
+    <Content Include="Views\Rates\RateDataSet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
