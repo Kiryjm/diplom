@@ -12,10 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ParamName)
+            @Html.DisplayNameFor(model => model.ParamType)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.RateId)
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.ParamValue)
+            @Html.DisplayNameFor(model => model.Value)
         </th>
         <th></th>
     </tr>
@@ -23,10 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ParamName)
+            @Html.DisplayFor(modelItem => item.ParamType.Name)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.RateId)
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.ParamValue)
+            @Html.DisplayFor(modelItem => item.Value)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

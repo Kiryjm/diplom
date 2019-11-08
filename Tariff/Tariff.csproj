@@ -163,6 +163,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OperatorsController.cs" />
+    <Compile Include="Controllers\ParamsController.cs" />
     <Compile Include="Controllers\ParamTypesController.cs" />
     <Compile Include="Controllers\RatesController.cs" />
     <Compile Include="Controllers\RateTypesController.cs" />
@@ -204,6 +205,14 @@
     <Compile Include="Migrations\201911081159485_nullable_ParamDataType.cs" />
     <Compile Include="Migrations\201911081159485_nullable_ParamDataType.Designer.cs">
       <DependentUpon>201911081159485_nullable_ParamDataType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081600004_ParamType_object_in_Param_added.cs" />
+    <Compile Include="Migrations\201911081600004_ParamType_object_in_Param_added.Designer.cs">
+      <DependentUpon>201911081600004_ParamType_object_in_Param_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081802213_Rate_collections_in_Param_added.cs" />
+    <Compile Include="Migrations\201911081802213_Rate_collections_in_Param_added.Designer.cs">
+      <DependentUpon>201911081802213_Rate_collections_in_Param_added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -306,6 +315,12 @@
     <Content Include="Views\ParamTypes\Edit.cshtml" />
     <Content Include="Views\ParamTypes\Index.cshtml" />
     <Content Include="Views\ParamTypes\ParamTypeDataSet.cshtml" />
+    <Content Include="Views\Params\Create.cshtml" />
+    <Content Include="Views\Params\Delete.cshtml" />
+    <Content Include="Views\Params\Details.cshtml" />
+    <Content Include="Views\Params\Edit.cshtml" />
+    <Content Include="Views\Params\Index.cshtml" />
+    <Content Include="Views\Params\ParamDataSet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -344,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081159485_nullable_ParamDataType.resx">
       <DependentUpon>201911081159485_nullable_ParamDataType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081600004_ParamType_object_in_Param_added.resx">
+      <DependentUpon>201911081600004_ParamType_object_in_Param_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081802213_Rate_collections_in_Param_added.resx">
+      <DependentUpon>201911081802213_Rate_collections_in_Param_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

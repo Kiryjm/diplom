@@ -17,7 +17,7 @@
         @Html.LabelFor(model => model.ParamDataType, htmlAttributes: new {@class = "control-label col-md-2"})
         <div class="col-md-10">
             @Html.EnumDropDownListFor(model => model.ParamDataType, "Choose data type")
-            @Html.ValidationMessageFor(model => model.ParamDataType, "Please, choose Parameter data type", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.ParamDataType, "", new { @class = "text-danger" })
         </div>
     </div>
 

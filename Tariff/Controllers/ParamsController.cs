@@ -17,7 +17,7 @@ namespace Tariff.Controllers
         // GET: Params
         public ActionResult Index()
         {
-            return View(db.Params.ToList());
+            return View(db.Params.Include(x => x.ParamType));
         }
 
         // GET: Params/Details/5
@@ -38,6 +38,14 @@ namespace Tariff.Controllers
         // GET: Params/Create
         public ActionResult Create()
         {
+            SelectList paramTypes = new SelectList(db.ParamTypes.ToList(), "Id", "Name");
+            SelectList rates = new SelectList(db.Rates.ToList(), "Id", "Name");
+
+
+            ViewData["paramTypes"] = paramTypes;
+            ViewData["rates"] = rates;
+
+
             return View();
         }
 
@@ -46,7 +54,7 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParamName,ParamValue")] Param param)
+        public ActionResult Create([Bind(Include = "Id,ParamTypeId,RateId,Value")] Param param)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +86,7 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ParamName,ParamValue")] Param param)
+        public ActionResult Edit([Bind(Include = "Id,ParamTypeId,RateId,Value")] Param param)
         {
             if (ModelState.IsValid)
             {

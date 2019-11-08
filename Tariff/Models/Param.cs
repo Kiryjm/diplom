@@ -14,5 +14,9 @@ namespace Tariff.Models
         public int RateId { get; set; }
 
         public string Value { get; set; }
+
+        public ParamType ParamType { get; set; }
+
+        public IEnumerable<Rate> Rates { get; set; }
     }
 }

@@ -83,7 +83,7 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,DataType")] ParamType paramType)
+        public ActionResult Edit([Bind(Include = "Id,Name,ParamDataType")] ParamType paramType)
         {
             if (ModelState.IsValid)
             {

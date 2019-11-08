@@ -7,8 +7,8 @@ namespace Tariff.Models
 {
     public enum ParamDataType
     {
-        Double,
-        Int,
-        Bool
+        Double = 1,
+        Int = 2,
+        Bool = 3
     }
 }
