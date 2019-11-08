@@ -163,6 +163,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OperatorsController.cs" />
+    <Compile Include="Controllers\ParamTypesController.cs" />
     <Compile Include="Controllers\RatesController.cs" />
     <Compile Include="Controllers\RateTypesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,14 +197,24 @@
     <Compile Include="Migrations\201911051950199_OperatorId_RateTypeId_added.Designer.cs">
       <DependentUpon>201911051950199_OperatorId_RateTypeId_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911072316136_ParamTypes_added.cs" />
+    <Compile Include="Migrations\201911072316136_ParamTypes_added.Designer.cs">
+      <DependentUpon>201911072316136_ParamTypes_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911081159485_nullable_ParamDataType.cs" />
+    <Compile Include="Migrations\201911081159485_nullable_ParamDataType.Designer.cs">
+      <DependentUpon>201911081159485_nullable_ParamDataType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\ParamDataType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Operator.cs" />
     <Compile Include="Models\Param.cs" />
+    <Compile Include="Models\ParamType.cs" />
     <Compile Include="Models\Rate.cs" />
     <Compile Include="Models\RateType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -289,6 +300,12 @@
     <Content Include="Views\RateTypes\Edit.cshtml" />
     <Content Include="Views\RateTypes\Index.cshtml" />
     <Content Include="Views\Rates\RateDataSet.cshtml" />
+    <Content Include="Views\ParamTypes\Create.cshtml" />
+    <Content Include="Views\ParamTypes\Delete.cshtml" />
+    <Content Include="Views\ParamTypes\Details.cshtml" />
+    <Content Include="Views\ParamTypes\Edit.cshtml" />
+    <Content Include="Views\ParamTypes\Index.cshtml" />
+    <Content Include="Views\ParamTypes\ParamTypeDataSet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +338,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911051950199_OperatorId_RateTypeId_added.resx">
       <DependentUpon>201911051950199_OperatorId_RateTypeId_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911072316136_ParamTypes_added.resx">
+      <DependentUpon>201911072316136_ParamTypes_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911081159485_nullable_ParamDataType.resx">
+      <DependentUpon>201911081159485_nullable_ParamDataType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

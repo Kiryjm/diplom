@@ -23,5 +23,7 @@ namespace Tariff.Models
 
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Tariff.Models.ParamType> ParamTypes { get; set; }
     }
 }

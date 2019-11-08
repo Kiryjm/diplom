@@ -4,7 +4,6 @@
     <h4>Rate</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @*@Html.HiddenFor(model => model.Id)*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -18,8 +17,6 @@
         @Html.LabelFor(model => model.Operator, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.OperatorId, ViewData["Operator"] as SelectList)
-
-            @*@Html.ValidationMessageFor(model => model.RateType, "", new { @class = "text-danger" })*@
         </div>
     </div>
 
@@ -27,8 +24,6 @@
         @Html.LabelFor(model => model.RateType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.RateTypeId, ViewData["RateType"] as SelectList)
-
-            @*@Html.ValidationMessageFor(model => model.RateType, "", new { @class = "text-danger" })*@
         </div>
     </div>
 

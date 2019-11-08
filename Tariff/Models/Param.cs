@@ -5,11 +5,14 @@ using System.Text;
 
 namespace Tariff.Models
 {
-   public class Param
+    public class Param
     {
         public int Id { get; set; }
 
-        public string Value { get; set; }
+        public int ParamTypeId { get; set; }
 
+        public int RateId { get; set; }
+
+        public string Value { get; set; }
     }
 }
