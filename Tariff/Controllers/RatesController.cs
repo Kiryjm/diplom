@@ -103,7 +103,7 @@ namespace Tariff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rate rate = db.Rates.Find(id);
+            Rate rate = db.Rates.Include(x=>x.Params.Select(y=>y.ParamType)).Single(x=>x.Id == id);
             if (rate == null)
             {
                 return HttpNotFound();
@@ -116,11 +116,15 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,RateTypeId,OperatorId")] Rate rate)
+        public ActionResult Edit([Bind(Include = "Id,Name,RateTypeId,OperatorId,Params")] Rate rate)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(rate).State = EntityState.Modified;
+                foreach (var item in rate.Params)
+                {
+                    db.Entry(item).State = EntityState.Modified;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
