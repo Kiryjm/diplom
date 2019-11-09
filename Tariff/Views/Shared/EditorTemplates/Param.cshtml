@@ -1,0 +1,12 @@
+﻿
+@model Tariff.Models.Param
+           
+@Html.HiddenFor(x => Model.ParamTypeId)
+
+    <div class="col-md-6">
+        @Html.DisplayFor(x => Model.ParamType.Name)
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(x => Model.Value, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+

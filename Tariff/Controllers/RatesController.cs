@@ -46,10 +46,23 @@ namespace Tariff.Controllers
         {
             SelectList operators = new SelectList(db.Operators.ToList(), "Id", "Name");
             SelectList rateTypes = new SelectList(db.RateTypes.ToList(), "Id", "Name");
+            List<ParamType> paramTypes = db.ParamTypes.ToList();
+            List<Param> paramsList = new List<Param>();
+
+            foreach (var item in paramTypes)
+            {
+                paramsList.Add(new Param
+                {
+                    ParamTypeId = item.Id,
+                    ParamType = item,
+                    Value = ""
+                });
+            }
 
             ViewData["Operator"] = operators;
             ViewData["RateType"] = rateTypes;
-            return View();
+            ViewData["Params"] = paramsList;
+            return View(new Rate{Params = paramsList});
         }
 
         // POST: Rates/Create
