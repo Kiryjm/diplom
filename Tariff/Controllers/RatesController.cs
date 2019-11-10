@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Tariff.Models;
 
 namespace Tariff.Controllers
@@ -13,6 +14,12 @@ namespace Tariff.Controllers
     public class RatesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        //internal string GetCheckBox(bool checkboxValue)
+        //{
+        //    return checkboxValue ? "True" : " False";
+        //}
+
 
         // GET: Rates
         public ActionResult Index()
@@ -77,7 +84,11 @@ namespace Tariff.Controllers
 
             //ViewData["Operator"] = operators;
             //ViewData["RateType"] = rateTypes;
+            //Param item = rate.Params.Find(x => x.ParamType.ParamDataType == ParamDataType.Bool);
+            //if (!item.Equals(null))
+            //{
 
+            //}
 
             if (ModelState.IsValid)
             {
