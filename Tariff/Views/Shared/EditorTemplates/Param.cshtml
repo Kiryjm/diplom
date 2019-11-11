@@ -5,15 +5,16 @@
 @Html.HiddenFor(x => Model.ParamTypeId)
 @Html.HiddenFor(x => Model.RateId)
 
-<div class="col-md-6">
+
+<div class="control-label col-md-2">
     @Html.DisplayFor(x => Model.ParamType.Name)
 </div>
-<div class="col-md-6">
+<div class="control-label col-md-10">
     @{
         if (Model.ParamType.ParamDataType.Value == ParamDataType.Bool)
         {
-            @Html.CheckBox("Value", new {@name = Model.Value, @id = "check-box", @onclick = "ChangeLabelText()"})
-            <label id="check-box-label" onclick=ChangeLabelText()>Disabled</label>
+            @Html.CheckBox("Value", new {@class = "col-md-10", @name = Model.Value, @id = "check-box", @onclick = "ChangeLabelText()"})
+            <label id="check-box-label" class="control-label col-md-2" onclick=ChangeLabelText()>Disabled</label>
         }
         else
         {
