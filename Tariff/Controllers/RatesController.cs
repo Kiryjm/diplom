@@ -106,6 +106,21 @@ namespace Tariff.Controllers
 
             SelectList operators = new SelectList(db.Operators.ToList(), "Id", "Name");
             SelectList rateTypes = new SelectList(db.RateTypes.ToList(), "Id", "Name");
+            //SelectList rates = new SelectList(db.Rates.ToList(), "Id", "Name");
+
+            
+            //List<Rate> rates = new List<Rate>(db.Rates.ToList());
+
+            //foreach (var item in rates)
+            //{
+            //    rates.Add(new Rate
+            //    {
+            //        ParamTypeId = item.Id,
+            //        ParamType = item,
+            //        Value = ""
+            //    });
+            //}
+
 
             ViewData["Operator"] = operators;
             ViewData["RateType"] = rateTypes;
@@ -118,6 +133,28 @@ namespace Tariff.Controllers
             if (rate == null)
             {
                 return HttpNotFound();
+            }
+            List<ParamType> paramTypes = db.ParamTypes.ToList();
+            HashSet<int> CurrentRateParamTypes = new HashSet<int>();
+
+            foreach (var param in rate.Params)
+            {
+                CurrentRateParamTypes.Add(param.ParamTypeId);
+            }
+
+            foreach (var item in paramTypes)
+            {
+                if (!CurrentRateParamTypes.Contains(item.Id))
+                {
+                    rate.Params.Add(new Param
+                    {
+                        ParamType = item,
+                        ParamTypeId = item.Id,
+                        RateId = rate.Id,
+                        Value = ""
+                    });
+                }
+
             }
             return View(rate);
         }

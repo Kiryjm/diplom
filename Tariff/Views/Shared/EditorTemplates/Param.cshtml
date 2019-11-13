@@ -13,8 +13,16 @@
     @{
         if (Model.ParamType.ParamDataType.Value == ParamDataType.Bool)
         {
-            @Html.CheckBox("Value", new {@class = "col-md-10", @name = Model.Value, @id = "check-box", @onclick = "ChangeLabelText()"})
-            <label id="check-box-label" class="control-label col-md-2" onclick=ChangeLabelText()>Disabled</label>
+            if (Model.Value == "true")
+            {
+                @Html.CheckBox("Value", new {@class = "col-md-10", id = "check-box", @checked = "checked", onclick = "ChangeLabelText()"})
+                <label id="check-box-label" class="control-label col-md-2">Enabled</label>
+            }
+            else
+            {
+                @Html.CheckBox("Value", new {@class = "col-md-10", id = "check-box", onclick = "ChangeLabelText()"})
+                <label id="check-box-label" class="control-label col-md-2">Disabled</label>
+            }
         }
         else
         {
@@ -25,13 +33,24 @@
 </div>
 <script type="text/javascript">
 
-    function ChangeLabelText() {
+    @*var _myNames = JSON.parse('@HttpRequest.');
+    alert(_myNames);*@
 
-        var LabelText = $('#check-box-label').text();
-        if (LabelText === "Disabled") {
+    function ChangeLabelText() {
+        //alert($('#check-box').attr("checked"));
+
+
+        var labelText = $('#check-box-label').text();
+
+        if (labelText === "Disabled") {
             $('#check-box-label').text("Enabled");
+
+            //$('#check-box-label').text("Enabled").attr("checked", "checked");
+
+
         } else {
             $('#check-box-label').text("Disabled");
+            //alert($('#check-box-label').attr("checked"));
         }
     };
 

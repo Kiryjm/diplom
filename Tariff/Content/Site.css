@@ -64,3 +64,7 @@ textarea {
     cursor: pointer;
     display: block;
 }
+
+#check-box {
+    width: auto;
+}
