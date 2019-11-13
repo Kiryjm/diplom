@@ -329,6 +329,7 @@
     <Content Include="Views\Params\Index.cshtml" />
     <Content Include="Views\Params\ParamDataSet.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Param.cshtml" />
+    <Content Include="Views\Rates\RateInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

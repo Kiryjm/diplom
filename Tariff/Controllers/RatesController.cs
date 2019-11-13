@@ -171,7 +171,14 @@ namespace Tariff.Controllers
                 db.Entry(rate).State = EntityState.Modified;
                 foreach (var item in rate.Params)
                 {
-                    db.Entry(item).State = EntityState.Modified;
+                    if (item.Id == 0)
+                    {
+                        db.Params.Add(item);
+                    }
+                    else
+                    {
+                        db.Entry(item).State = EntityState.Modified;
+                    }
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -212,6 +219,21 @@ namespace Tariff.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult RateInfo(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Rate rate = db.Rates.Include(x=>x.Operator).Include(x => x.Params.Select(y => y.ParamType)).Single(x => x.Id == id);
+            if (rate == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(rate);
         }
     }
 }

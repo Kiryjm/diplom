@@ -1,0 +1,42 @@
+﻿@using Tariff.Models
+@model Tariff.Models.Rate
+
+@{
+    ViewBag.Title = "RateInfo";
+}
+
+<h2>@Model.Name</h2>
+<h4>@Model.Operator.Name</h4>
+
+<table class="table">
+
+    @foreach (var item in Model.Params)
+    {
+        if (item.Value != "" && item.Value != null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParamType.Name)
+                </td>
+                <td>
+                    @if (item.ParamType.ParamDataType == ParamDataType.Bool)
+                    {
+                        if (item.Value == "true")
+                        {
+                            <text>✅</text>
+                        }
+                        else
+                        {
+                            <text>❎</text>
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Value)
+                    }
+                </td>
+            </tr>
+        }
+    }
+
+</table>
