@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -30,7 +31,7 @@ namespace Tariff.Controllers
             //ViewData["Operator"] = operators;
             //ViewData["RateType"] = rateTypes;
 
-            return View(db.Rates.Include(x=>x.Operator).Include(x => x.RateType));
+            return View(db.Rates.Include(x => x.Operator).Include(x => x.RateType).ToList());
         }
 
         // GET: Rates/Details/5
@@ -40,11 +41,13 @@ namespace Tariff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Rate rate = db.Rates.Find(id);
             if (rate == null)
             {
                 return HttpNotFound();
             }
+
             return View(rate);
         }
 
@@ -69,7 +72,7 @@ namespace Tariff.Controllers
             ViewData["Operator"] = operators;
             ViewData["RateType"] = rateTypes;
             ViewData["Params"] = paramsList;
-            return View(new Rate{Params = paramsList});
+            return View(new Rate {Params = paramsList});
         }
 
         // POST: Rates/Create
@@ -77,7 +80,7 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Rate rate)
+        public ActionResult Create(Rate rate)
         {
             //SelectList operators = new SelectList(db.Operators, "Id", "Name");
             //SelectList rateTypes = new SelectList(db.RateTypes, "Id", "Name");
@@ -103,12 +106,11 @@ namespace Tariff.Controllers
         // GET: Rates/Edit/5
         public ActionResult Edit(int? id)
         {
-
             SelectList operators = new SelectList(db.Operators.ToList(), "Id", "Name");
             SelectList rateTypes = new SelectList(db.RateTypes.ToList(), "Id", "Name");
             //SelectList rates = new SelectList(db.Rates.ToList(), "Id", "Name");
 
-            
+
             //List<Rate> rates = new List<Rate>(db.Rates.ToList());
 
             //foreach (var item in rates)
@@ -129,11 +131,13 @@ namespace Tariff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rate rate = db.Rates.Include(x=>x.Params.Select(y=>y.ParamType)).Single(x=>x.Id == id);
+
+            Rate rate = db.Rates.Include(x => x.Params.Select(y => y.ParamType)).Single(x => x.Id == id);
             if (rate == null)
             {
                 return HttpNotFound();
             }
+
             List<ParamType> paramTypes = db.ParamTypes.ToList();
             HashSet<int> CurrentRateParamTypes = new HashSet<int>();
 
@@ -154,8 +158,8 @@ namespace Tariff.Controllers
                         Value = ""
                     });
                 }
-
             }
+
             return View(rate);
         }
 
@@ -164,7 +168,8 @@ namespace Tariff.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,RateTypeId,OperatorId,Params")] Rate rate)
+        public ActionResult Edit([Bind(Include = "Id,Name,RateTypeId,OperatorId,Params")]
+            Rate rate)
         {
             if (ModelState.IsValid)
             {
@@ -179,10 +184,15 @@ namespace Tariff.Controllers
                     {
                         db.Entry(item).State = EntityState.Modified;
                     }
+
+                    if (item.Value == null)
+                        item.Value = "❌";
                 }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(rate);
         }
 
@@ -193,11 +203,13 @@ namespace Tariff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Rate rate = db.Rates.Find(id);
             if (rate == null)
             {
                 return HttpNotFound();
             }
+
             return View(rate);
         }
 
@@ -218,6 +230,7 @@ namespace Tariff.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -227,13 +240,52 @@ namespace Tariff.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rate rate = db.Rates.Include(x=>x.Operator).Include(x => x.Params.Select(y => y.ParamType)).Single(x => x.Id == id);
+
+            Rate rate = db.Rates.Include(x => x.Operator).Include(x => x.Params.Select(y => y.ParamType))
+                .Single(x => x.Id == id);
             if (rate == null)
             {
                 return HttpNotFound();
             }
 
             return View(rate);
+        }
+
+        public ActionResult CompareRates(List<int> rate)
+        {
+            Dictionary<int, string> paramTypeDictionary = new Dictionary<int, string>();
+            List<string> paramValueList = new List<string>();
+            //List<string> list = new List<string>();
+            //IQueryable<string> paramValues = null;
+
+
+            foreach (var item in db.ParamTypes)
+            {
+                paramTypeDictionary.Add(item.Id, item.Name);
+            }
+
+            foreach (var paramIdItem in paramTypeDictionary.Keys)
+            {
+                foreach (var rateIdItem in rate)
+                {
+                   var paramValues = (db.Params.Where(p => p.ParamTypeId == paramIdItem && p.RateId == rateIdItem)
+                        .Select(p => p.Value)).FirstOrDefault(); 
+                    //list = paramValues.ToList();
+                    paramValueList.Add(paramValues);
+                }
+            }
+
+            //var paramValues = (from p in db.Params
+            //    join pt in db.ParamTypes on p.ParamTypeId equals pt.Id
+            //    join r in db.Rates on p.RateId equals r.Id
+            //    select p.Value);
+
+            //paramValueList = paramValues.ToString();
+            ViewBag.paramTypeDictionary = paramTypeDictionary;
+            ViewBag.paramValueList = paramValueList;
+
+            List<Rate> rates = db.Rates.Where(x => rate.Contains(x.Id)).ToList();
+            return View(rates);
         }
     }
 }

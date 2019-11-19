@@ -1,0 +1,42 @@
+﻿@using Tariff.Models
+@model List<Tariff.Models.Rate>
+
+
+@{
+    ViewBag.Title = "CompareRates";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            RATE PARAMETERS
+        </th>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <th>
+                @Model[i].Name
+            </th>
+        }
+    </tr>
+    @foreach (var paramType in ViewBag.paramTypeDictionary.Values)
+    {
+        //for (int i = 0; i < ViewBag.ParamValueList.Count; i++)
+        // {
+        foreach (var value in ViewBag.ParamValueList)
+        {
+            <tr>
+                <td>
+                    @paramType
+                </td>
+
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @value
+                    </td>
+                }
+
+            </tr>
+        }
+    }
+</table>

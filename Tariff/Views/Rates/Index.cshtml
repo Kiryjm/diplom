@@ -9,39 +9,53 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Operator)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RateType)
-        </th>
-        <th></th>
+@using (Html.BeginForm("CompareRates", "Rates", FormMethod.Get))
+{
 
-    </tr>
+    <table class="table">
+        <tr>
+            
+            <th>
+                Choose rates for comparison
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RateType)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(x => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Operator.Name)
-        </td>
-        <td>
-             @Html.DisplayFor(modelItem => item.RateType.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
-            @Html.ActionLink("View", "RateInfo", new { id = item.Id })
-        </td>
-    </tr>
+            <th></th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input  type="checkbox" name="rate" value = @item.Id />
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operator.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RateType.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.Id}) |
+                    @Html.ActionLink("View", "RateInfo", new {id = item.Id})
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <input type="submit">
 }
-
-</table>
