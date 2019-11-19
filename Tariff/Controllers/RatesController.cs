@@ -173,7 +173,7 @@ namespace Tariff.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rate).State = EntityState.Modified;
+                
                 foreach (var item in rate.Params)
                 {
                     if (item.Id == 0)
@@ -184,10 +184,8 @@ namespace Tariff.Controllers
                     {
                         db.Entry(item).State = EntityState.Modified;
                     }
-
-                    if (item.Value == null)
-                        item.Value = "❌";
                 }
+                db.Entry(rate).State = EntityState.Modified;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
