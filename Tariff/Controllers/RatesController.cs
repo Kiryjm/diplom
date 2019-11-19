@@ -253,38 +253,32 @@ namespace Tariff.Controllers
 
         public ActionResult CompareRates(List<int> rate)
         {
-            Dictionary<int, string> paramTypeDictionary = new Dictionary<int, string>();
-            List<string> paramValueList = new List<string>();
-            //List<string> list = new List<string>();
-            //IQueryable<string> paramValues = null;
-
-
-            foreach (var item in db.ParamTypes)
-            {
-                paramTypeDictionary.Add(item.Id, item.Name);
-            }
-
-            foreach (var paramIdItem in paramTypeDictionary.Keys)
-            {
-                foreach (var rateIdItem in rate)
-                {
-                   var paramValues = (db.Params.Where(p => p.ParamTypeId == paramIdItem && p.RateId == rateIdItem)
-                        .Select(p => p.Value)).FirstOrDefault(); 
-                    //list = paramValues.ToList();
-                    paramValueList.Add(paramValues);
-                }
-            }
-
-            //var paramValues = (from p in db.Params
-            //    join pt in db.ParamTypes on p.ParamTypeId equals pt.Id
-            //    join r in db.Rates on p.RateId equals r.Id
-            //    select p.Value);
-
-            //paramValueList = paramValues.ToString();
-            ViewBag.paramTypeDictionary = paramTypeDictionary;
-            ViewBag.paramValueList = paramValueList;
-
+            
+            List<ParamType> paramTypes = db.ParamTypes.ToList();
             List<Rate> rates = db.Rates.Where(x => rate.Contains(x.Id)).ToList();
+
+            foreach (var rateItem in rates)
+            {
+                var orederedParams = new List<Param>();
+                Dictionary<int, Param> paramTypeIdToParam = new Dictionary<int, Param>();
+
+                foreach (var param in rateItem.Params)
+                {
+                    paramTypeIdToParam[param.ParamTypeId] = param;
+                }
+
+                foreach (var paramType in paramTypes)
+                {
+                    orederedParams.Add(paramTypeIdToParam.ContainsKey(paramType.Id) ? paramTypeIdToParam[paramType.Id] : null);
+                    
+                }
+
+                rateItem.Params = orederedParams;
+            }
+
+            ViewBag.paramTypes = paramTypes;
+
+            
             return View(rates);
         }
     }
