@@ -4,7 +4,6 @@
 <hr />
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 <div class="form-group">
-    @*@Html.LabelFor(model => model.Param, htmlAttributes: new { @class = "control-label col-md-2" })*@
     <div class="col-md-10">
         @Html.DropDownListFor(model => model.ParamTypeId, ViewData["paramTypes"] as SelectList)
         @Html.ValidationMessageFor(model => model.ParamTypeId, "", new { @class = "text-danger" })

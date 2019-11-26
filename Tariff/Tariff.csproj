@@ -159,7 +159,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OperatorsController.cs" />
@@ -214,10 +213,13 @@
     <Compile Include="Migrations\201911081802213_Rate_collections_in_Param_added.Designer.cs">
       <DependentUpon>201911081802213_Rate_collections_in_Param_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911261458281_Book_model_was_deleted.cs" />
+    <Compile Include="Migrations\201911261458281_Book_model_was_deleted.Designer.cs">
+      <DependentUpon>201911261458281_Book_model_was_deleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Book.cs" />
     <Compile Include="Models\ParamDataType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -294,12 +296,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Books\Delete.cshtml" />
-    <Content Include="Views\Books\Details.cshtml" />
-    <Content Include="Views\Books\Edit.cshtml" />
-    <Content Include="Views\Books\Index.cshtml" />
-    <Content Include="Views\Books\Create.cshtml" />
-    <Content Include="Views\Books\BooksData.cshtml" />
     <Content Include="Views\Rates\Create.cshtml" />
     <Content Include="Views\Rates\Delete.cshtml" />
     <Content Include="Views\Rates\Details.cshtml" />
@@ -331,6 +327,8 @@
     <Content Include="Views\Shared\EditorTemplates\Param.cshtml" />
     <Content Include="Views\Rates\RateInfo.cshtml" />
     <Content Include="Views\Rates\CompareRates.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Rates\CompareError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081802213_Rate_collections_in_Param_added.resx">
       <DependentUpon>201911081802213_Rate_collections_in_Param_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261458281_Book_model_was_deleted.resx">
+      <DependentUpon>201911261458281_Book_model_was_deleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

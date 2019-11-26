@@ -1,20 +1,22 @@
 ﻿@model IEnumerable<Tariff.Models.Rate>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Rates table";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Rate", "Create")
+</p>
+<p>
+    @Html.ActionLink("Create New Parameter", "Create", "ParamTypes")
 </p>
 @using (Html.BeginForm("CompareRates", "Rates", FormMethod.Get))
 {
-
     <table class="table">
         <tr>
-            
+
             <th>
                 Choose rates for comparison
             </th>
@@ -31,12 +33,11 @@
             <th></th>
 
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    <input  type="checkbox" name="rate" value = @item.Id />
+                    <input id="check-box" type="checkbox" name="rate" value=@item.Id />
                 </td>
                 <td>
                     @Html.DisplayFor(x => item.Name)
@@ -57,5 +58,6 @@
 
     </table>
 
-    <input type="submit">
+    <input id="compare-btn" type="submit" value="Compare">
 }
+

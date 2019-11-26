@@ -10,7 +10,6 @@ namespace Tariff.Models
         {
         }
 
-        public DbSet<Book> Books { get; set; }
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Operator> Operators { get; set; }
         public DbSet<Param> Params { get; set; }

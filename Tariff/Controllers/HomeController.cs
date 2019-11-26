@@ -13,8 +13,6 @@ namespace Tariff.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
@@ -22,6 +20,11 @@ namespace Tariff.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Help()
+        {
             return View();
         }
 

@@ -251,7 +251,12 @@ namespace Tariff.Controllers
 
         public ActionResult CompareRates(List<int> rate)
         {
-            
+
+            if (rate == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             List<ParamType> paramTypes = db.ParamTypes.ToList();
             List<Rate> rates = db.Rates.Where(x => rate.Contains(x.Id)).ToList();
 
@@ -276,7 +281,6 @@ namespace Tariff.Controllers
 
             ViewBag.paramTypes = paramTypes;
 
-            
             return View(rates);
         }
     }
