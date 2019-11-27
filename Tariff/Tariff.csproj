@@ -328,7 +328,6 @@
     <Content Include="Views\Rates\RateInfo.cshtml" />
     <Content Include="Views\Rates\CompareRates.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
-    <Content Include="Views\Rates\CompareError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
