@@ -247,6 +247,7 @@
     <Content Include="Content\shared\_mixins.scss" />
     <Content Include="Content\shared\_reset.scss" />
     <Content Include="Content\style.scss" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
